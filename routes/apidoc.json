@@ -1,0 +1,12 @@
+{
+  "name": "Data Travel API",
+  "version": "1.0.0",
+  "description": "Data Travel API Documentation",
+  "title": "Data Travel API",
+  "url" : "http://localhost:3000",
+  "sampleUrl": "http://localhost:3000",
+  "template": {
+  	"withCompare": true,
+  	"withGenerator": true
+  }
+}
