@@ -1,0 +1,19 @@
+{
+  "development": {
+    "username": "helmisatria",
+    "password": "helmisatria",
+    "database": "travel_development",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false,  
+    "timezone": "Asia/Jakarta"
+  },
+  "production": {
+    "username": "helmisatria",
+    "password": "helmisatria",
+    "database": "travel_production",
+    "dialect": "mysql",
+    "operatorsAliases": false,
+    "timezone": "Asia/Jakarta"
+  }
+}
