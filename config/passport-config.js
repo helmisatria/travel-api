@@ -10,7 +10,7 @@ passport.use(new GoogleStategy({
 }, async (accessToken, refreshToken, profile, done) => {
   try {
     console.log('====================================');
-    console.log(profile);
+    console.log(profile.emails);
     console.log('====================================');
     const userFound = await User.findOne({
       where: {
@@ -22,6 +22,7 @@ passport.use(new GoogleStategy({
       const newUser = await User.create({
         googleId: profile.id,
         nama: profile.displayName,
+        email: profile.emails[0].value,
       });
       return done(null, newUser);
     }

@@ -1,17 +1,19 @@
 const express = require('express');
 const path = require('path');
-const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
+const jwt = require('express-jwt');
 
-const index = require('./routes/index');
+const city = require('./routes/city');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
+const airport = require('./routes/airport');
 
 require('./config/passport-config');
+const { token } = require('./config/keys');
 
 const app = express();
 
@@ -28,9 +30,22 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.use('/', index);
+// Register routes
+app.use('/api/city', [
+  jwt({ secret: token.key }),
+  city,
+]);
+app.use('/api/airport', [
+  jwt({ secret: token.key }),
+  airport,
+]);
+app.use('/user', [
+  jwt({ secret: token.key }),
+  users,
+]);
 app.use('/auth', auth);
-app.use('/user', users);
+
+// End of register routes
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -43,7 +58,9 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   if (err.name === 'UnauthorizedError') {
-    res.status(401).send('invalid token...');
+    res.status(401).send({ message: 'invalid token' });
+  } else {
+    next(err);
   }
 });
 

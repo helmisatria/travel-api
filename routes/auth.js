@@ -7,7 +7,7 @@ const router = express.Router();
 const { token } = require('../config/keys');
 
 router.get('/google', passport.authenticate('google', {
-  scope: ['profile'],
+  scope: ['profile', 'email'],
   prompt: 'select_account',
 }));
 
@@ -16,7 +16,7 @@ router.get('/google/callback', passport.authenticate('google', {
   session: false,
 }), (req, res) => {
   jwt.sign({ user: req.user }, token.key, {
-    expiresIn: '30m',
+    expiresIn: '24h',
   }, (err, newToken) => {
     if (!err) {
       res.status(200).send({ token: newToken });
@@ -26,7 +26,7 @@ router.get('/google/callback', passport.authenticate('google', {
   // res.redirect('/user/profile');
 });
 
-router.get('/logout',  (req, res) => {
+router.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
