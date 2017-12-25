@@ -3,15 +3,14 @@ const apidoc = require('gulp-apidoc');
 
 gulp.task('apidoc', (done) => {
   apidoc({
-    src: 'routes/',
-    dest: 'docs/',
+    src: './routes/docs/',
+    dest: './docs/',
     debug: true,
-    includeFilters: ['.*\\.js$'],
   }, done);
 });
 
 gulp.task('default', ['apidoc']);
 
 gulp.task('watch', () => {
-  gulp.watch('routes/*.js', ['apidoc']);
+  gulp.watch('routes/docs/*.docs.js', ['apidoc']);
 });

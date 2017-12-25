@@ -1,6 +1,6 @@
 define({
   "name": "Data Travel API",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Data Travel API Documentation",
   "title": "Data Travel API",
   "url": "http://localhost:3000",
@@ -13,7 +13,7 @@ define({
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2017-12-23T15:44:09.298Z",
+    "time": "2017-12-25T12:13:08.020Z",
     "url": "http://apidocjs.com",
     "version": "0.17.6"
   }

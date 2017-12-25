@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Airport.associate = (models) => {
-    Airport.belongsTo(models.City, { foreignKey: 'city_code', targetKey: 'code' });
+    Airport.belongsTo(models.City, { foreignKey: 'city_code', targetKey: 'code', as: 'city' });
   };
 
   return Airport;

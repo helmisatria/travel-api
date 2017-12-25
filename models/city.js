@@ -1,9 +1,19 @@
 module.exports = (sequelize, DataTypes) => {
   const City = sequelize.define('City', {
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true,
+      },
+    },
     code: {
       type: DataTypes.STRING,
       unique: true,
+      validate: {
+        notEmpty: true,
+        isUppercase: true,
+        len: [2, 3],
+      },
     },
   });
 
