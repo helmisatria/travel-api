@@ -16,14 +16,14 @@ Things you need to install
 
 ```
 cd travel-api && npm install
-node .
+npm start
 ```
 
 or if you prefer using yarn
 
 ```
 cd travel-api && yarn install
-node .
+yarn start
 ```
 
 If you want to open the API Documentation, you can open the **index.html** on **docs/**

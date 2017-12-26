@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
     "debug": "DEBUG=travel-api:* npm start",
     "watch": "gulp watch",
     "docs": "live-server docs"
