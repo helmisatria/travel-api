@@ -1,6 +1,6 @@
 # Travel - Backend (REST API)
 
-CRUD Application with OAuth2.0 (Google) and Authorization Token with JWT (JSON WEB TOKEN). Uses MySQL Database with Sequelize (ORM)
+CRUD Application with OAuth2.0 (Google) and Authorization Token with JWT (JSON Web Token). Uses MySQL Database with Sequelize (ORM)
 
 ## Getting Started
 
