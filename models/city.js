@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notEmpty: true,
       },
+      allowNull: false,
     },
     code: {
       type: DataTypes.STRING,
@@ -14,14 +15,20 @@ module.exports = (sequelize, DataTypes) => {
         isUppercase: true,
         len: [2, 3],
       },
+      allowNull: false,
     },
   });
 
   City.associate = (models) => {
     City.hasMany(models.Airport, {
+      foreignKey: {
+        name: 'city_code',
+        allowNull: false,
+      },
       onDelete: 'cascade',
-      foreignKey: 'city_code',
       sourceKey: 'code',
+      as: 'airports',
+      constraints: false,
     });
   };
 

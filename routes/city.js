@@ -37,9 +37,7 @@ router.get('/all_cities', async (req, res) => {
         exclude: ['createdAt', 'updatedAt', 'id'],
       },
     });
-    res.status(200).json({
-      cities,
-    });
+    res.status(200).json(cities);
   } catch (e) {
     res.send(400).send({
       error: e,
@@ -55,14 +53,13 @@ router.get('/all_cities_airport', async (req, res) => {
         attributes: {
           exclude: ['createdAt', 'updatedAt', 'id'],
         },
+        as: 'airports',
       }],
       attributes: {
         exclude: ['createdAt', 'updatedAt', 'id'],
       },
     });
-    res.status(200).json({
-      cities,
-    });
+    res.status(200).json(cities);
   } catch (e) {
     res.send(400).send({
       error: e,
@@ -88,6 +85,54 @@ router.get('/get/:code', async (req, res) => {
   } catch (e) {
     return res.status(400).json({
       message: `City ${req.params.code} not found`,
+    });
+  }
+});
+
+router.delete('/delete/:code', async (req, res) => {
+  try {
+    const city = await City.destroy({
+      where: {
+        code: req.params.code,
+      },
+    });
+
+    if (city === 0) {
+      return res.status(400).send({
+        message: 'City not found',
+      });
+    }
+    return res.status(200).send({
+      message: `City ${req.params.code} deleted`,
+    });
+  } catch (e) {
+    return res.status(400).send({
+      error: e,
+    });
+  }
+});
+
+router.put('/update/:code', async (req, res) => {
+  const { body } = req;
+
+  try {
+    const city = await City.update(body, {
+      where: {
+        code: req.params.code,
+      },
+    });
+
+    if (city[0] === 1) {
+      return res.status(200).send({
+        message: `City ${req.params.code} updated`,
+      });
+    }
+    return res.status(400).send({
+      message: 'City not found',
+    });
+  } catch (e) {
+    return res.status(400).send({
+      error: e,
     });
   }
 });

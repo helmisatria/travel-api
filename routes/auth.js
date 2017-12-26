@@ -16,7 +16,7 @@ router.get('/google/callback', passport.authenticate('google', {
   session: false,
 }), (req, res) => {
   jwt.sign({ user: req.user }, token.key, {
-    expiresIn: '24h',
+    expiresIn: '1w',
   }, (err, newToken) => {
     if (!err) {
       res.status(200).send({ token: newToken });

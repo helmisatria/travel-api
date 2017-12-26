@@ -1,7 +1,7 @@
 
 /**
  *
- * @api {POST} /api/city/create Create new city
+ * @api {POST} /api/city/create CREATE New City
  * @apiName createNewCity
  * @apiGroup City
  * @apiVersion  0.0.1
@@ -13,7 +13,7 @@
  * @apiHeader {Bearer} Authorization Bearer <access_token>
  *
  * @apiHeaderExample {Bearer} Request-Example:
- Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMDE5MDdiMzAtZTJjNy00ZjNlLTk4OTQtNjRmMDkzNmU2OWM4IiwibmFtYSI6IkhlbG1pIFNhdHJpYSIsImVtYWlsIjoic2F0cmlhaGVsbWlAZ21haWwuY29tIiwiZ29vZ2xlSWQiOiIxMDQ4NjY1MjE2MTE2MjYxMTA5NzQiLCJjcmVhdGVkQXQiOiIyMDE3LTEyLTI1VDA3OjAzOjMxLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE3LTEyLTI1VDA3OjAzOjMxLjAwMFoiLCJkZWxldGVkQXQiOm51bGx9LCJpYXQiOjE1MTQxODcyNzAsImV4cCI6MTUxNDI3MzY3MH0.ek90g1LUSdBQbpnrlUBwP6iZyAb1B1D8lA8c5LXAOeM
+ Bearer Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMzI0YWVkMWMtMjk2Yy00YmM5LTk3MjMtMWE0NTc1MGQ4MzNjIiwibmFtYSI6IkhlbG1pIFNhdHJpYSIsImVtYWlsIjoiaGVsbG8uc2F0cmlhaGVsbWlAZ21haWwuY29tIiwiZ29vZ2xlSWQiOiIxMTcxMzM1MDUwNjczMzAwOTY3ODUiLCJjcmVhdGVkQXQiOiIyMDE3LTEyLTI2VDA3OjE0OjE2LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE3LTEyLTI2VDA3OjE0OjE2LjAwMFoiLCJkZWxldGVkQXQiOm51bGx9LCJpYXQiOjE1MTQyNzI2MzYsImV4cCI6MTUxNDg3NzQzNn0.YCLQNNtLNU7vaDdVkyZjZDCaPYadRB8lrz4BBt5QAJA
  *
  * @apiParamExample {json} Request-Example:
   {
@@ -64,3 +64,199 @@
     }
  *
  */
+
+/**
+ *
+ * @api {GET} /api/city/all_cities GET All Cities
+ * @apiName getAllCities
+ * @apiGroup City
+ * @apiVersion  0.0.1
+ *
+ * @apiHeader {Bearer} Authorization Bearer <access_token>
+ *
+ * @apiHeaderExample {Bearer} Request-Example:
+ Bearer Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMzI0YWVkMWMtMjk2Yy00YmM5LTk3MjMtMWE0NTc1MGQ4MzNjIiwibmFtYSI6IkhlbG1pIFNhdHJpYSIsImVtYWlsIjoiaGVsbG8uc2F0cmlhaGVsbWlAZ21haWwuY29tIiwiZ29vZ2xlSWQiOiIxMTcxMzM1MDUwNjczMzAwOTY3ODUiLCJjcmVhdGVkQXQiOiIyMDE3LTEyLTI2VDA3OjE0OjE2LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE3LTEyLTI2VDA3OjE0OjE2LjAwMFoiLCJkZWxldGVkQXQiOm51bGx9LCJpYXQiOjE1MTQyNzI2MzYsImV4cCI6MTUxNDg3NzQzNn0.YCLQNNtLNU7vaDdVkyZjZDCaPYadRB8lrz4BBt5QAJA
+ *
+ *
+ * @apiSuccessExample {array} Success-Response:
+  [
+      {
+          "name": "Yogyakarta",
+          "code": "HSN"
+      },
+      {
+          "name": "Paris",
+          "code": "PAR"
+      }
+  ]
+ *
+  * @apiError (Bad Request 400) {string} message Error message
+ *
+ * @apiErrorExample {json} Error-Response (Invalid Token):
+  Error 401: Unauthorized
+  {
+      "message": "invalid token"
+  }
+ *
+ */
+
+/**
+  *
+  * @api {GET} /api/city/all_cities_airport GET All Cities w/ Airport(s)
+  * @apiName getAllCitiesWithAirports
+  * @apiGroup City
+  * @apiVersion  0.0.1
+  *
+  * @apiHeader {Bearer} Authorization Bearer <access_token>
+  *
+  * @apiHeaderExample {Bearer} Request-Example:
+  Bearer Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMzI0YWVkMWMtMjk2Yy00YmM5LTk3MjMtMWE0NTc1MGQ4MzNjIiwibmFtYSI6IkhlbG1pIFNhdHJpYSIsImVtYWlsIjoiaGVsbG8uc2F0cmlhaGVsbWlAZ21haWwuY29tIiwiZ29vZ2xlSWQiOiIxMTcxMzM1MDUwNjczMzAwOTY3ODUiLCJjcmVhdGVkQXQiOiIyMDE3LTEyLTI2VDA3OjE0OjE2LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE3LTEyLTI2VDA3OjE0OjE2LjAwMFoiLCJkZWxldGVkQXQiOm51bGx9LCJpYXQiOjE1MTQyNzI2MzYsImV4cCI6MTUxNDg3NzQzNn0.YCLQNNtLNU7vaDdVkyZjZDCaPYadRB8lrz4BBt5QAJA
+  *
+  *
+  * @apiSuccessExample {array} Success-Response:
+    [
+        {
+            "name": "Paris",
+            "code": "PAR",
+            "Airports": [
+                {
+                    "name": "Paris-Orl",
+                    "code": "ORY",
+                    "city_code": "PAR"
+                }
+            ]
+        },
+        {
+            "name": "Yogyakarta",
+            "code": "HSN",
+            "Airports": [
+                {
+                    "name": "Garuda Indonesia",
+                    "code": "HGH",
+                    "city_code": "HSN"
+                }
+            ]
+        }
+    ]
+  *
+  * @apiError (Bad Request 400) {string} message Error message
+ *
+ * @apiErrorExample {json} Error-Response (Invalid Token):
+  Error 401: Unauthorized
+  {
+      "message": "invalid token"
+  }
+ *
+  */
+
+/**
+   *
+   * @api {GET} /api/city/get/:code GET a City
+   * @apiName getCityWithCode
+   * @apiGroup City
+   * @apiVersion  0.0.1
+   *
+    * @apiHeader {Bearer} Authorization Bearer <access_token>
+    *
+    * @apiHeaderExample {Bearer} Request-Example:
+    Bearer Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMzI0YWVkMWMtMjk2Yy00YmM5LTk3MjMtMWE0NTc1MGQ4MzNjIiwibmFtYSI6IkhlbG1pIFNhdHJpYSIsImVtYWlsIjoiaGVsbG8uc2F0cmlhaGVsbWlAZ21haWwuY29tIiwiZ29vZ2xlSWQiOiIxMTcxMzM1MDUwNjczMzAwOTY3ODUiLCJjcmVhdGVkQXQiOiIyMDE3LTEyLTI2VDA3OjE0OjE2LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE3LTEyLTI2VDA3OjE0OjE2LjAwMFoiLCJkZWxldGVkQXQiOm51bGx9LCJpYXQiOjE1MTQyNzI2MzYsImV4cCI6MTUxNDg3NzQzNn0.YCLQNNtLNU7vaDdVkyZjZDCaPYadRB8lrz4BBt5QAJA
+    *
+   * @apiParam  {String} code City's CODE
+   *
+   * @apiSuccessExample {json} Success-Response:
+    {
+        "city": {
+            "name": "Yogyakarta",
+            "code": "YK"
+        }
+    }
+   *
+  * @apiError (Bad Request 400) {string} message Error message
+  *
+  * @apiErrorExample {json} Error-Response (Invalid Token):
+    Error 401: Unauthorized
+    {
+        "message": "invalid token"
+    }
+  *
+   */
+
+/**
+ *
+ * @api {DELETE} /api/city/delete/:code DELETE City
+ * @apiName deleteCity
+ * @apiGroup City
+ * @apiVersion  0.0.1
+ *
+  * @apiHeader {Bearer} Authorization Bearer <access_token>
+  *
+  * @apiHeaderExample {Bearer} Request-Example:
+  Bearer Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMzI0YWVkMWMtMjk2Yy00YmM5LTk3MjMtMWE0NTc1MGQ4MzNjIiwibmFtYSI6IkhlbG1pIFNhdHJpYSIsImVtYWlsIjoiaGVsbG8uc2F0cmlhaGVsbWlAZ21haWwuY29tIiwiZ29vZ2xlSWQiOiIxMTcxMzM1MDUwNjczMzAwOTY3ODUiLCJjcmVhdGVkQXQiOiIyMDE3LTEyLTI2VDA3OjE0OjE2LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE3LTEyLTI2VDA3OjE0OjE2LjAwMFoiLCJkZWxldGVkQXQiOm51bGx9LCJpYXQiOjE1MTQyNzI2MzYsImV4cCI6MTUxNDg3NzQzNn0.YCLQNNtLNU7vaDdVkyZjZDCaPYadRB8lrz4BBt5QAJA
+  *
+ * @apiParam  {String} code City's code wants to be deleted
+ *
+ * @apiParamExample  {String} Request-Example (Params):
+     code: YK
+ * @apiSuccessExample {json} Success-Response:
+   {
+      "message": "City YK deleted"
+   }
+ *
+  * @apiError (Bad Request 400) {string} message Error message
+  *
+  * @apiErrorExample {json} Error-Response (Invalid Token):
+    Error 401: Unauthorized
+    {
+        "message": "invalid token"
+    }
+  *
+  * @apiErrorExample {json} Error-Response (City Not Found):
+    Error 400: Not Found
+    {
+        "message": "City not found"
+    }
+  *
+ */
+
+/**
+  *
+  * @api {PUT} /api/city/update/:code UPDATE City
+  * @apiName updateCity
+  * @apiGroup City
+  * @apiVersion  0.0.1
+  *
+  * @apiHeader {Bearer} Authorization Bearer <access_token>
+  *
+  * @apiHeaderExample {Bearer} Request-Example:
+  Bearer Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMzI0YWVkMWMtMjk2Yy00YmM5LTk3MjMtMWE0NTc1MGQ4MzNjIiwibmFtYSI6IkhlbG1pIFNhdHJpYSIsImVtYWlsIjoiaGVsbG8uc2F0cmlhaGVsbWlAZ21haWwuY29tIiwiZ29vZ2xlSWQiOiIxMTcxMzM1MDUwNjczMzAwOTY3ODUiLCJjcmVhdGVkQXQiOiIyMDE3LTEyLTI2VDA3OjE0OjE2LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE3LTEyLTI2VDA3OjE0OjE2LjAwMFoiLCJkZWxldGVkQXQiOm51bGx9LCJpYXQiOjE1MTQyNzI2MzYsImV4cCI6MTUxNDg3NzQzNn0.YCLQNNtLNU7vaDdVkyZjZDCaPYadRB8lrz4BBt5QAJA
+  *
+  * @apiParam  {String} code City's CODE
+  *
+  * @apiParamExample  {String} Request-Example:
+      code: BND
+  *
+  * @apiSuccess (200) {String} [name] City's name
+  * @apiSuccess (200) {String} [code] City's code
+  *
+  *
+  * @apiSuccessExample {type} Success-Response:
+    {
+        "message": "City BND updated"
+    }
+  *
+ *
+  * @apiError (Bad Request 400) {string} message Error message
+  *
+  * @apiErrorExample {json} Error-Response (Invalid Token):
+    Error 401: Unauthorized
+    {
+        "message": "invalid token"
+    }
+  *
+  * @apiErrorExample {json} Error-Response (City Not Found):
+    Error 400: Not Found
+    {
+        "message": "City not found"
+    }
+  *
+  */

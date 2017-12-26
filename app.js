@@ -49,7 +49,7 @@ app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  const err = new Error('Not Found');
+  const err = new Error('Request Not Found');
   err.status = 404;
   next(err);
 });
@@ -71,7 +71,10 @@ app.use((err, req, res, next) => {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json({
+    status: err.status,
+    message: err.message,
+  });
 });
 
 module.exports = app;

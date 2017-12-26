@@ -9,7 +9,7 @@ const { token } = require('../config/keys');
 router.get('/profile', jwt({
   secret: token.key,
 }), (req, res) => {
-  res.json({ status: 200, user: req.user });
+  res.send({ status: 200, user: req.user.user });
 });
 
 module.exports = router;
